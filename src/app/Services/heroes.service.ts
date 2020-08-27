@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 const urlMarvel = 'assets/logos/marvel_logo.png';
 const urlDc = 'assets/logos/dc_logo.png';
 @Injectable()
@@ -31,7 +30,7 @@ export class HeroesService {
       img: 'assets/img/daredevil.png',
       aparicion: '1964-01-01',
       casa: 'Marvel',
-      logo: urlMarvel
+      logo: urlMarvel,
     },
     {
       nombre: 'Hulk',
@@ -40,7 +39,7 @@ export class HeroesService {
       img: 'assets/img/hulk.png',
       aparicion: '1962-05-01',
       casa: 'Marvel',
-      logo: urlMarvel
+      logo: urlMarvel,
     },
     {
       nombre: 'Linterna Verde',
@@ -58,7 +57,7 @@ export class HeroesService {
       img: 'assets/img/spiderman.png',
       aparicion: '1962-08-01',
       casa: 'Marvel',
-      logo: urlMarvel
+      logo: urlMarvel,
     },
     {
       nombre: 'Wolverine',
@@ -67,7 +66,7 @@ export class HeroesService {
       img: 'assets/img/wolverine.png',
       aparicion: '1974-11-01',
       casa: 'Marvel',
-      logo: urlMarvel
+      logo: urlMarvel,
     },
   ];
 
@@ -75,21 +74,33 @@ export class HeroesService {
     console.log('Servicio listo para usar!!!');
   }
 
-
-  getHeroes(): Heroe[]{
-      return this.heroes;
+  getHeroes(): Heroe[] {
+    return this.heroes;
   }
 
-  getHeroe(i: string){
+  getHeroe(i: string) {
     return this.heroes[i];
   }
 
+  buscarHeroes(termino: string) {
+    let heroesArr: Heroe[] = [];
+    termino = termino.toLowerCase();
+
+    for (let heroe of this.heroes) {
+      let nombre = heroe.nombre.toLowerCase();
+
+      if (nombre.indexOf(termino) >= 0) {
+        heroesArr.push(heroe);
+      }
+    }
+    return heroesArr;
+  }
 }
-export interface Heroe{
-    nombre: string;
-    bio: string;
-    img: string;
-    aparicion: string;
-    casa: string;
-    logo: string;
+export interface Heroe {
+  nombre: string;
+  bio: string;
+  img: string;
+  aparicion: string;
+  casa: string;
+  logo: string;
 }
