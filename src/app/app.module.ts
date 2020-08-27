@@ -6,12 +6,13 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
-import { compileNgModuleFromRender2 } from '@angular/compiler/src/render3/r3_module_compiler';
 
 // Rutas
 import {APP_ROUTING} from './app.routes'
 
-
+// Servicios
+import { HeroesService } from './Services/heroes.service';
+import { HeroeComponent } from './components/heroe/heroe.component';
 
 // Componentes
 @NgModule({
@@ -21,12 +22,15 @@ import {APP_ROUTING} from './app.routes'
     HomeComponent,
     AboutComponent,
     HeroesComponent,
+    HeroeComponent,
   ],
   imports: [
     BrowserModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    HeroesService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
